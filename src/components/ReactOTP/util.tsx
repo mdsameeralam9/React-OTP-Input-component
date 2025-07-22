@@ -7,7 +7,7 @@ const setOTPValueFromProps = (value: string, inputLength: number) => {
     return state;
 }
 
-const isValidInputValue = (value: string, type:string="number") => {
+const isValidInputValue = (value: string, type: 'number' | 'text' | 'password' = "number") => {
     // type = ['number', 'string', 'password', 'mixed'];
     let isValid = type === "number" ? !isNaN(parseInt(value)) : typeof value === 'string';
     return isValid && value.trim().length === 1

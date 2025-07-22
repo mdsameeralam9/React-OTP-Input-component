@@ -29,13 +29,13 @@ const OtpInput: React.FC<OTPInputProps> = (props) => {
   } = props;
 
   const [otp, setOtp] = useState(setOTPValueFromProps(value, inputLength)); //Array(inputLength).fill("")
-  const inputRefs = useRef<HTMLInputElement | null[]>([]);
+  const inputRefs = useRef<(HTMLInputElement | null)[]>([]);
 
   useEffect(() => {
-    if (autoFocus) {
+    if (autoFocus && inputRefs.current[0]) {
       inputRefs.current[0].focus()
     }
-  }, [])
+  }, [autoFocus])
 
   // on value change
   useEffect(() => {
@@ -44,7 +44,9 @@ const OtpInput: React.FC<OTPInputProps> = (props) => {
 
   // focusInput
   function focusInput(index: number) {
-    inputRefs.current[index].focus()
+    if (inputRefs.current[index]) {
+      inputRefs.current[index]?.focus()
+    }
   }
 
   // handleChange
@@ -126,7 +128,7 @@ const OtpInput: React.FC<OTPInputProps> = (props) => {
               onPaste={handlePaste}
               isDisabled={isDisabled}
               index={index}
-              placeholder={placeholder[index]}
+              placeholder={placeholder ? placeholder[index] : undefined}
             />
             {index !== inputLength - 1 && separator ? separator : null}
           </Fragment>

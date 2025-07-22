@@ -3,12 +3,12 @@ import type { OTPIFormProps } from '../App';
 
 interface SidebarProps {
     OTPInputConfiguration: OTPIFormProps,
-    setOTPInputConfiguration: () => void;
+    setOTPInputConfiguration: React.Dispatch<React.SetStateAction<OTPIFormProps>>;
 }
 
-const Sidebar: React.FC<SidebarProps> = ({ OTPInputConfiguration = {}, setOTPInputConfiguration }) => {
+const Sidebar: React.FC<SidebarProps> = ({ OTPInputConfiguration, setOTPInputConfiguration }) => {
 
-    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement> | {target: {name: string, value: any}}) => {
         let { name, value } = e.target;
         if(name === 'inputLength'){
           value = Number(value);
@@ -16,7 +16,7 @@ const Sidebar: React.FC<SidebarProps> = ({ OTPInputConfiguration = {}, setOTPInp
         }
 
         if(name === 'otpValue'){
-          if((value.length > OTPInputConfiguration?.inputLength)) return;
+          if((value.length > OTPInputConfiguration?.inputLength!)) return;
         }
 
         setOTPInputConfiguration((prev) => ({ ...prev, [name]: value }))
@@ -58,7 +58,7 @@ const Sidebar: React.FC<SidebarProps> = ({ OTPInputConfiguration = {}, setOTPInp
 
             <div className="form-group">
                 <label htmlFor="value">placeholder</label>
-                <input id="value" type="text" placeholder="*" maxLength={inputLength ?? 1} name='placeholder' value={placeholder} onChange={handleChange} />
+                <input id="value" type="text" placeholder="*" maxLength={inputLength || 1} name='placeholder' value={placeholder || ""} onChange={handleChange} />
             </div>
 
             <div className="form-group">

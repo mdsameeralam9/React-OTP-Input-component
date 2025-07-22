@@ -4,13 +4,13 @@ interface InputProps {
     onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
     onKeyDown: (e: React.KeyboardEvent<HTMLInputElement>) => void;
     onPaste: (e: React.ClipboardEvent<HTMLInputElement>) => void;
-    type: string;
+    type: 'number' | 'text' | 'password';
     value: string;
     ref?: React.Ref<HTMLInputElement>;
     autoFocus?: boolean;
     isDisabled: boolean;
     index:number;
-    placeholder:string;
+    placeholder?: string;
 }
 
 const Input: React.FC<InputProps> = (props) => {

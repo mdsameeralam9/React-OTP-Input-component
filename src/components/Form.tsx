@@ -7,7 +7,7 @@ interface FormProps extends OTPIFormProps {
   setOTPInputConfiguration: React.Dispatch<React.SetStateAction<OTPIFormProps>>;
 }
 
-const Form: React.FC<FormProps> = ({ setOTPInputConfiguration, inputLength, separatorValue,otpValue, placeholder, inputType, autoFocus,isDisabled }) => {
+const Form: React.FC<FormProps> = ({ setOTPInputConfiguration, inputLength = 4, separatorValue = "", otpValue = "", placeholder = "", inputType = 'number', autoFocus = true, isDisabled = false }) => {
   const handleClear = () => setOTPInputConfiguration({
     inputLength: 4,
     otpValue: "",
@@ -36,7 +36,7 @@ const Form: React.FC<FormProps> = ({ setOTPInputConfiguration, inputLength, sepa
       />
       <div className="button-group">
         <button className="btn clear"  onClick={handleClear}>Clear</button>
-        <button className="btn submit" disabled={otpValue?.length !== inputLength} onClick={handleSubmit}>Submit OTP</button>
+        <button className="btn submit" disabled={otpValue.length !== inputLength} onClick={handleSubmit}>Submit OTP</button>
       </div>
     </div>
   );

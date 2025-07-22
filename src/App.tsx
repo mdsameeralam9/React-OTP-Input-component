@@ -8,7 +8,7 @@ export interface OTPIFormProps {
   separatorValue?:string;
   otpValue?:string;
   placeholder?:string;
-  inputType?:number | string;
+  inputType?: 'number' | 'text' | 'password';
   autoFocus?:boolean;
   isDisabled?:boolean;
 }

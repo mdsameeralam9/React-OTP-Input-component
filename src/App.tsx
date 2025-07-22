@@ -14,7 +14,7 @@ export interface OTPIFormProps {
 }
 
 function App() {
-  const [OTPInputConfiguration, setOTPInputConfiguration] = useState({
+  const [OTPInputConfiguration, setOTPInputConfiguration] = useState<OTPIFormProps>({
     inputLength: 4,
     otpValue: "",
     separatorValue: "",

@@ -15,7 +15,7 @@ interface InputProps {
 }
 
 const Input: React.FC<InputProps> = (props) => {
-    const { onChange, onKeyDown, onPaste, ref, type,index, value, autoFocus, isDisabled, placeholder } = props;
+    const { onChange, onKeyDown, onPaste, ref, type,index, value, isDisabled, placeholder } = props;
 
     return (
         <input

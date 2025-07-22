@@ -1,0 +1,23 @@
+.OtpInput{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+._input-box {
+  width: 40px;
+  height: 40px;
+  margin-right: 4px;
+  text-align: center;
+  border: 1px solid gray;
+
+  /* Hide number input arrows */
+  -moz-appearance: textfield;
+}
+._input-box::-webkit-inner-spin-button,
+._input-box::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}

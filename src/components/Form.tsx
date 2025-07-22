@@ -1,0 +1,45 @@
+import React, { useState } from 'react';
+import OtpInput from './ReactOTP';
+import type { OTPIFormProps } from '../App';
+
+
+interface FormProps extends OTPIFormProps {
+  setOTPInputConfiguration: React.Dispatch<React.SetStateAction<OTPIFormProps>>;
+}
+
+const Form: React.FC<FormProps> = ({ setOTPInputConfiguration, inputLength, separatorValue,otpValue, placeholder, inputType, autoFocus,isDisabled }) => {
+  const handleClear = () => setOTPInputConfiguration({
+    inputLength: 4,
+    otpValue: "",
+    separatorValue: "",
+    inputType: 'number',
+    placeholder: "",
+    autoFocus: true,
+    isDisabled: false
+  });
+
+  const handleSubmit = () => alert(`OTP Submitted: ${otpValue}`);
+  const setOtpValue = (val:string) => setOTPInputConfiguration(p => ({...p, ["otpValue"]: val}))
+
+  return (
+    <div className="otp-form">
+      <h2>Enter Verification Code</h2>
+      <OtpInput
+        value={otpValue}
+        handleOtpValue={setOtpValue}
+        inputLength={inputLength}
+        separator={<span>{separatorValue}</span>}
+        type={inputType}
+        autoFocus={autoFocus}
+        isDisabled={isDisabled}
+        placeholder={placeholder}
+      />
+      <div className="button-group">
+        <button className="btn clear"  onClick={handleClear}>Clear</button>
+        <button className="btn submit" disabled={otpValue?.length !== inputLength} onClick={handleSubmit}>Submit OTP</button>
+      </div>
+    </div>
+  );
+};
+
+export default Form;

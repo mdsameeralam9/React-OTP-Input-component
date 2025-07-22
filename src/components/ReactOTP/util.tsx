@@ -2,7 +2,7 @@ const setOTPValueFromProps = (value: string, inputLength: number) => {
     let state = Array(inputLength).fill("")
     if (!value) return state;
     for (let i = 0; i < inputLength; i++) {
-        state[i] = value[i]
+        state[i] = value[i] ?? ""
     }
     return state;
 }

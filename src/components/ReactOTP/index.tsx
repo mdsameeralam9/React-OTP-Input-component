@@ -33,7 +33,7 @@ const OtpInput: React.FC<OTPInputProps> = (props) => {
 
   useEffect(() => {
     if (autoFocus && inputRefs.current[0]) {
-      inputRefs.current[0].focus()
+      focusInput(0)
     }
   }, [autoFocus])
 
@@ -76,10 +76,13 @@ const OtpInput: React.FC<OTPInputProps> = (props) => {
     const copyOTP = otp.slice();
     copyOTP[index] = value;
     setOtp(copyOTP);
+    const combinedOTP = copyOTP.join("");
+    handleOtpValue(combinedOTP)
+
 
     // focu input to next
     if (value) {
-      handleOtpValue(copyOTP.join(""))
+      // handleOtpValue(copyOTP.join(""))
       if (index < inputLength - 1) focusInput(index + 1);
     }
   }

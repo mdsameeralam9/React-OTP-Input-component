@@ -3,7 +3,7 @@ import Input from './Input';
 import { isValidInputValue, setOTPValueFromProps, keyboardEventsKey } from './util';
 import './style.css';
 
-type AllowedInputTypes = 'number' | 'text' | 'password';
+export type AllowedInputTypes = 'number' | 'text' | 'password';
 
 interface OTPInputProps {
   inputLength?: number;

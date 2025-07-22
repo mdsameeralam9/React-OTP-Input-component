@@ -1,10 +1,11 @@
 import React from 'react';
+import type { AllowedInputTypes } from '.';
 
 interface InputProps {
     onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
     onKeyDown: (e: React.KeyboardEvent<HTMLInputElement>) => void;
     onPaste: (e: React.ClipboardEvent<HTMLInputElement>) => void;
-    type: 'number' | 'text' | 'password';
+    type: AllowedInputTypes;
     value: string;
     ref?: React.Ref<HTMLInputElement>;
     autoFocus?: boolean;

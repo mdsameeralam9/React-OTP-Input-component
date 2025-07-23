@@ -67,13 +67,19 @@
 }
 
 .otp-form {
-  flex: 1;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 40px;
+  width: 400px;
+  margin: 60px auto;
+  padding: 20px;
   background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  font-family: 'Roboto', sans-serif;
+  text-align: center;
+  gap: 10px;
 }
 
 .otp-form h2 {
@@ -99,7 +105,6 @@
 }
 
 .button-group {
-  margin-top: 25px;
 }
 
 .btn {
@@ -110,16 +115,14 @@
   border-radius: 6px;
   cursor: pointer;
   transition: background-color 0.3s;
+  width: 300px;
 }
 
-.clear {
-  background-color: #f44336;
-  color: white;
-}
 
 .submit {
-  background-color: #4caf50;
+  background-color: purple;
   color: white;
+  width: 300px;
 }
 
 .submit:disabled {

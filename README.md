@@ -68,7 +68,7 @@ function MyComponent() {
 ### Resend OTP Component
 
 ```tsx
-import { ResendOTP } from './components/ReactOTP/Resend';
+import { ResendOTP } from './components/ReactOTP';
 
 function MyComponent() {
   const handleResendClick = () => {

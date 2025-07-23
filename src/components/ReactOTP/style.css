@@ -29,7 +29,7 @@
   -moz-appearance: textfield;
 }
 ._input-box:focus{
-  box-shadow: 0 0 2px 2px purple;
+ box-shadow: 0 0 1px 2px purple;
 }
 
 ._input-box::-webkit-inner-spin-button,

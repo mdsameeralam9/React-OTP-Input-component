@@ -16,7 +16,7 @@
 .sidebar h2 {
   font-size: 1.4rem;
   margin-bottom: 20px;
-  color: purple;
+  color: #333;
 }
 
 .form-group {
@@ -85,7 +85,7 @@
 .otp-form h2 {
   font-size: 1.6rem;
   margin-bottom: 20px;
-  color: #333;
+  color: purple;
 }
 
 .otp-input {

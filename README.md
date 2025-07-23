@@ -3,7 +3,8 @@
 A customizable, accessible OTP (One-Time Password) input component for React applications built with TypeScript.
 
 React OTP Input Demo
-![alt text](<Screenshot.png>)
+![alt text](<Screenshot (52).png>)
+![alt text](<Screenshot (53).png>)
 
 ## Features
 

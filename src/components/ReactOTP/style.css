@@ -23,9 +23,13 @@
   outline: none;
   background-color: #fff;
   border: none;
+  color: #800080a6;
 
   /* Hide number input arrows */
   -moz-appearance: textfield;
+}
+._input-box:focus{
+  box-shadow: 0 0 2px 2px purple;
 }
 
 ._input-box::-webkit-inner-spin-button,
@@ -51,6 +55,6 @@
 }
 
 .resend-button {
-  color: #1a73e8;
+  color: purple;
   cursor: pointer;
 }

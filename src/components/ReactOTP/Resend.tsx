@@ -4,29 +4,36 @@ interface ResendProps {
   btnLabel?: string;
   text?: string;
   second?: number;
+  onResendClick: () => void;
 }
 
-export const Resend: React.FC<ResendProps> = ({ 
-  second = 10, 
-  btnLabel = "Resend OTP", 
-  text = "Didn't receive the otp?" 
+export const ResendOTP: React.FC<ResendProps> = ({
+  second = 10,
+  btnLabel = "Resend OTP",
+  text = "Didn't receive the otp?",
+  onResendClick=()=>{}
 }) => {
-  const [isTimerActive, setIsTimerActive] = useState(true);
-  const [secondsLeft, setSecondsLeft] = useState(second);
+  const [isTimerActive, setIsTimerActive] = useState<boolean>(true);
+  const [secondsLeft, setSecondsLeft] = useState<number>(second);
 
   const handleResend = useCallback(() => {
     setIsTimerActive(true);
     setSecondsLeft(second);
+    onResendClick()
   }, [second]);
 
   useEffect(() => {
-    let timerId: NodeJS.Timeout | undefined;
-    
-    if (isTimerActive && secondsLeft > 0) {
-      timerId = setTimeout(() => setSecondsLeft(prev => prev - 1), 1000);
-    } else if (isTimerActive && secondsLeft === 0) {
-      setIsTimerActive(false);
-      setSecondsLeft(second);
+    let timerId: ReturnType<typeof setTimeout> | undefined;
+
+    if (isTimerActive && secondsLeft >= 0) {
+      timerId = setTimeout(() => {
+        if (isTimerActive && secondsLeft === 0) {
+          setIsTimerActive(false);
+          setSecondsLeft(second);
+        } else {
+          setSecondsLeft(prev => prev - 1)
+        }
+      }, 1000);
     }
 
     return () => clearTimeout(timerId);

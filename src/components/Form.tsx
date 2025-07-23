@@ -1,5 +1,5 @@
 import React from 'react';
-import OtpInput, { Resend } from './ReactOTP';
+import OtpInput, { ResendOTP } from './ReactOTP';
 import type { OTPIFormProps } from '../App';
 
 
@@ -26,10 +26,10 @@ const Form: React.FC<FormProps> = ({ setOTPInputConfiguration, inputLength = 4, 
         placeholder={placeholder}
       />
 
-      <Resend 
-        
-      
+      <ResendOTP 
+        onResendClick={() => console.log("Resend clicked")}
       />
+
       <div className="button-group">
         <button className="btn submit" disabled={otpValue.length !== inputLength} onClick={handleSubmit}>Verify</button>
       </div>

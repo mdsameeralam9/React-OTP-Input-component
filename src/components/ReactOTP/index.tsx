@@ -2,7 +2,7 @@ import React, { useState, useRef, useEffect, Fragment } from 'react';
 import Input from './Input';
 import { isValidInputValue, setOTPValueFromProps, keyboardEventsKey } from './util';
 import './style.css';
-import { Resend } from './Resend';
+import { ResendOTP } from './Resend';
 
 export type AllowedInputTypes = 'number' | 'text' | 'password';
 
@@ -142,6 +142,6 @@ const OtpInput: React.FC<OTPInputProps> = (props) => {
 }
 
 export default OtpInput;
-export { Resend };
+export { ResendOTP };
 
 

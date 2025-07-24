@@ -40,21 +40,49 @@
 
 
 
-/* resend Text */
+/* ResendOTP Component Styles */
 .resendComponent {
   margin: 10px 0;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: 10px;
+  /* gap: 12px;
+  flex-wrap: wrap; */
+  width: 100%;
+  max-width: 400px;
+  padding: 8px;
 }
 
 .resend-text {
-  font-size: 13px;
+  font-size: 14px;
   color: #333333;
+  text-align: center;
+}
+
+.resend-timer {
+  color: purple;
+  font-weight: 600;
+  font-size: 15px;
+  min-width: 50px;
+  text-align: center;
 }
 
 .resend-button {
   color: purple;
+  background-color: transparent;
+  border: none;
+  padding: 0;
+  font-size: 14px;
   cursor: pointer;
+  text-decoration: underline;
+  outline: none;
+}
+
+.resend-button:hover {
+  color: #660066;
+}
+
+.resend-button:focus {
+  text-decoration: underline;
+  text-underline-offset: 2px;
 }

@@ -6,6 +6,7 @@ const useResend= ({ maxTime = 60, timeInterval=1000, onResendClick=()=>{} }) => 
   const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   useEffect(() => {
+    if(timerRef.current) clearTimeout(timerRef.current)
     timerRef.current = setTimeout(() => {
         if(isTimerActive && remainingTime === 0){
            setIsTimerActive(false)
@@ -15,7 +16,9 @@ const useResend= ({ maxTime = 60, timeInterval=1000, onResendClick=()=>{} }) => 
      
     }, timeInterval);
 
-    return () => clearTimeout(timerRef.current);
+    return () => {
+        if(timerRef.current) clearTimeout(timerRef.current)
+    };
   }, [remainingTime, timeInterval]);
 
 

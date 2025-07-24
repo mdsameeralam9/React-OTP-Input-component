@@ -33,7 +33,7 @@
   margin-bottom: 15px;
 }
 
-.form-groupr > label{
+.form-groupr>label {
   cursor: pointer;
   user-select: none;
 }
@@ -105,24 +105,25 @@
 }
 
 .button-group {
+  width: 100%;
+  padding: 0 4px;
 }
 
 .btn {
   padding: 10px 20px;
-  margin: 0 10px;
   font-size: 1rem;
   border: none;
   border-radius: 6px;
   cursor: pointer;
   transition: background-color 0.3s;
-  width: 300px;
+  /* width: 300px; */
 }
 
 
 .submit {
   background-color: purple;
   color: white;
-  width: 300px;
+  width: 100%;
 }
 
 .submit:disabled {
@@ -131,7 +132,7 @@
 
 /* Mobile Responsive Styles */
 @media screen and (max-width: 480px) {
- .sidebar{
-  display: none;
- }
+  .sidebar {
+    display: none;
+  }
 }

@@ -28,8 +28,6 @@ const Form: React.FC<FormProps> = ({ setOTPInputConfiguration, inputLength = 4, 
       <ResendOTP 
         maxTime={10}
         onResendClick={() => console.log("Resend clicked")}
-        //renderTime={(remainTime) => <span>You can resend OTP in:{remainTime}</span>}
-        //renderResendButton={(handleResendClick) => <button onClick={handleResendClick}>My Button</button>}
       />
 
       <div className="button-group">

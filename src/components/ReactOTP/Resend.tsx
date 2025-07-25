@@ -4,27 +4,27 @@ import useResendOTP from './hooks/useResendOTP';
 import { getMinutesAndSeconds, formattedTime } from './util';
 
 interface ResendProps {
-  btnLabel?: string;
-  text?: string;
+  resendButtonLabel?: string;
+  resendDisplayLabel?: string;
   maxTime?: number;
   onResendClick: () => void;
   className?: string;
   renderTime?: (remainingTime: string) => React.ReactNode;
   renderResendButton?: (handleResendClick: any) => React.ReactNode;
+  timerLabel?:string
 }
 
 export const ResendOTP: React.FC<ResendProps> = ({
-  btnLabel = "Resend OTP",
-  text = "Didn't receive the otp?",
   className = '',
   renderTime,
   renderResendButton,
+  timerLabel="Resend OTP in",
+  resendButtonLabel="Resend OTP",
+  resendDisplayLabel="Didn't receive the otp?",
   ...props
 }) => {
   const { remainingTime, isTimerActive, handleResendClick } = useResendOTP(props);
   const { minutes, seconds } = getMinutesAndSeconds(remainingTime);
-
-  console.log(remainingTime, minutes, seconds)
 
  const displayRemainingTime = `${formattedTime(minutes)}:${formattedTime(seconds)}`;
 
@@ -34,7 +34,7 @@ export const ResendOTP: React.FC<ResendProps> = ({
         <Fragment>
           {renderTime ? renderTime(remainingTime) :
             <Fragment>
-              <span className='resend-text'>Resend OTP in</span>
+              <span className='resend-text'>{timerLabel}</span>
               <span className='resend-timer'>{displayRemainingTime}</span>
             </Fragment>
           }
@@ -43,16 +43,15 @@ export const ResendOTP: React.FC<ResendProps> = ({
       ) : (
         <Fragment>
           {renderResendButton ? renderResendButton(handleResendClick) :
-
             <>
-              <span className='resend-text'>{text}</span>
+              <span className='resend-text'>{resendDisplayLabel}</span>
               <button
                 className='resend-button'
                 onClick={handleResendClick}
-                aria-label={btnLabel}
+                aria-label={resendButtonLabel}
                 type="button"
               >
-                {btnLabel}
+                {resendButtonLabel}
               </button>
             </>
           }

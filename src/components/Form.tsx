@@ -2,7 +2,6 @@ import React from 'react';
 import OtpInput, { ResendOTP } from './ReactOTP';
 import type { OTPIFormProps } from '../App';
 
-
 interface FormProps extends OTPIFormProps {
   setOTPInputConfiguration: React.Dispatch<React.SetStateAction<OTPIFormProps>>;
 }
@@ -26,7 +25,7 @@ const Form: React.FC<FormProps> = ({ setOTPInputConfiguration, inputLength = 4, 
       />
 
       <ResendOTP 
-        maxTime={10}
+        maxTime={3700}
         onResendClick={() => console.log("Resend clicked")}
       />
 

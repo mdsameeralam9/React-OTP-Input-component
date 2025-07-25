@@ -1,6 +1,7 @@
 import React, { Fragment } from 'react';
 import './style.css';
-import useResend from './hooks/useResend';
+import useResendOTP from './hooks/useResendOTP';
+import { getMinutesAndSeconds, formattedTime } from './util';
 
 interface ResendProps {
   btnLabel?: string;
@@ -8,7 +9,7 @@ interface ResendProps {
   maxTime?: number;
   onResendClick: () => void;
   className?: string;
-  renderTime?: (formattedTime: string) => React.ReactNode;
+  renderTime?: (remainingTime: string) => React.ReactNode;
   renderResendButton?: (handleResendClick: any) => React.ReactNode;
 }
 
@@ -20,17 +21,21 @@ export const ResendOTP: React.FC<ResendProps> = ({
   renderResendButton,
   ...props
 }) => {
-  const { remainingTime, isTimerActive, handleResendClick } = useResend(props)
-  const formattedTime = remainingTime < 10 ? `00:0${remainingTime}` : `00:${remainingTime}`;
+  const { remainingTime, isTimerActive, handleResendClick } = useResendOTP(props);
+  const { minutes, seconds } = getMinutesAndSeconds(remainingTime);
+
+  console.log(remainingTime, minutes, seconds)
+
+ const displayRemainingTime = `${formattedTime(minutes)}:${formattedTime(seconds)}`;
 
   return (
     <div className={`resendComponent ${className}`} role="timer" aria-live="polite">
       {isTimerActive ? (
         <Fragment>
-          {renderTime ? renderTime(formattedTime) :
+          {renderTime ? renderTime(remainingTime) :
             <Fragment>
               <span className='resend-text'>Resend OTP in</span>
-              <span className='resend-timer'>{formattedTime}</span>
+              <span className='resend-timer'>{displayRemainingTime}</span>
             </Fragment>
           }
         </Fragment>

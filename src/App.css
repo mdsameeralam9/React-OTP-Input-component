@@ -4,7 +4,6 @@
   font-family: Arial, sans-serif;
 }
 
-
 .sidebar {
   width: 280px;
   padding: 20px;
@@ -117,7 +116,6 @@
   border-radius: 6px;
   cursor: pointer;
   transition: background-color 0.3s;
-  /* width: 300px; */
 }
 
 

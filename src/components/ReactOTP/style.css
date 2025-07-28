@@ -8,25 +8,16 @@
 }
 
 ._input-box {
-  /* width: 40px;
-  height: 40px;
-  margin-right: 4px;
-  text-align: center;
-  border: 1px solid gray; */
-
   width: 45px;
   height: 45px;
   font-size: 19px;
   text-align: center;
   border-radius: 6px;
-  /* border: 1px solid #ccc; */
   box-shadow: 0 0 4px 2px rgba(0, 0, 0, 0.1);
   outline: none;
   background-color: #fff;
   border: none;
   color: #800080a6;
-
-  /* Hide number input arrows */
   -moz-appearance: textfield;
 }
 
@@ -40,16 +31,12 @@
   margin: 0;
 }
 
-
-
 /* ResendOTP Component Styles */
 .resendComponent {
   margin: 10px 0;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  /* gap: 12px;
-  flex-wrap: wrap; */
   width: 100%;
   max-width: 400px;
   padding: 8px;
@@ -89,7 +76,7 @@
   text-underline-offset: 2px;
 }
 
-.renderTimeDefaultClass{
+.renderTimeDefaultClass {
   display: flex;
   justify-content: space-between;
   width: 100%;

@@ -8,7 +8,7 @@ interface FormProps extends OTPIFormProps {
 
 const Form: React.FC<FormProps> = ({ setOTPInputConfiguration, inputLength = 4, separatorValue = "", otpValue = "", placeholder = "", inputType = 'number', autoFocus = true, isDisabled = false }) => {
   const handleSubmit = () => alert(`OTP Submitted: ${otpValue}`);
-  const setOtpValue = (val:string) => setOTPInputConfiguration(p => ({...p, ["otpValue"]: val}))
+  const setOtpValue = (val: string) => setOTPInputConfiguration(p => ({ ...p, ["otpValue"]: val }))
 
   return (
     <div className="otp-form">
@@ -24,7 +24,7 @@ const Form: React.FC<FormProps> = ({ setOTPInputConfiguration, inputLength = 4, 
         placeholder={placeholder}
       />
 
-      <ResendOTP 
+      <ResendOTP
         maxTime={10}
         onResendClick={() => console.log("Resend clicked")}
       />

@@ -79,9 +79,15 @@ function MyComponent() {
   return (
     <ResendOTP 
       onResendClick={handleResendClick}
-      second={30}
-      text="Didn't receive the code?"
-      btnLabel="Resend OTP"
+      maxTime={30}
+      resendDisplayLabel="Didn't receive the code?"
+      resendButtonLabel="Resend OTP"
+      className="custom-resend-wrapper"
+      resendButtonClass="custom-button"
+      resendTextClass="custom-text"
+      resendTimerClass="custom-timer"
+      resendButtonStyle={{ color: '#007bff' }}
+      timerLabelStyle={{ fontWeight: 'bold' }}
     />
   );
 }
@@ -107,9 +113,25 @@ function MyComponent() {
 | Prop | Type | Default | Description |
 |------|------|---------|-------------|
 | `onResendClick` | function | `() => {}` | Callback function triggered when the resend button is clicked |
-| `second` | number | `10` | Countdown time in seconds before allowing resend |
-| `text` | string | `"Didn't receive the otp?"` | Text displayed before the resend button |
-| `btnLabel` | string | `"Resend OTP"` | Label for the resend button |
+| `maxTime` | number | `10` | Countdown time in seconds before allowing resend |
+| `resendDisplayLabel` | string | `"Didn't receive the otp?"` | Text displayed before the resend button |
+| `resendButtonLabel` | string | `"Resend OTP"` | Label for the resend button |
+| `timerLabel` | string | `"Resend OTP in"` | Label displayed during countdown |
+| `className` | string | `""` | Custom CSS class for the wrapper |
+| `renderTimeClass` | string | `""` | Custom CSS class for timer container |
+| `resendButtonClass` | string | `""` | Custom CSS class for button container |
+| `resendTextClass` | string | `""` | Custom CSS class for text elements |
+| `resendTimerClass` | string | `""` | Custom CSS class for timer display |
+| `resendButtonLabelClass` | string | `""` | Custom CSS class for button label |
+| `resendDisplayLabelClass` | string | `""` | Custom CSS class for display label |
+| `renderTimeStyle` | CSSProperties | `{}` | Inline styles for timer container |
+| `resendButtonStyle` | CSSProperties | `{}` | Inline styles for button container |
+| `timerLabelStyle` | CSSProperties | `{}` | Inline styles for timer label |
+| `displayRemainingTimeStyle` | CSSProperties | `{}` | Inline styles for remaining time |
+| `resendButtonLabelStyle` | CSSProperties | `{}` | Inline styles for button label |
+| `resendDisplayLabelStyle` | CSSProperties | `{}` | Inline styles for display label |
+| `renderTime` | function | `undefined` | Custom render function for timer display |
+| `renderResendButton` | function | `undefined` | Custom render function for resend button |
 
 ## Detailed Features
 
@@ -142,6 +164,8 @@ The ResendOTP component provides a countdown timer for OTP resend functionality:
 - Automatically enables the resend button when the timer reaches zero
 - Customizable countdown duration
 - Customizable text and button labels
+- **Custom styling support** - Apply custom CSS classes and inline styles to all elements
+- **Flexible rendering** - Custom render functions for complete UI control
 
 ## Demo App
 https://react-otp-input-component-alpha.vercel.app/

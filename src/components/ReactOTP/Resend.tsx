@@ -73,7 +73,7 @@ export const ResendOTP: React.FC<ResendProps> = ({
 
 const RenderTimeDefault = ({ timerLabel = "", displayRemainingTime = "", renderTimeClass = "", renderTimeStyle = {} }) => {
   return (
-    <div className={renderTimeClass || ""}
+    <div className={`renderTimeDefaultClass ${renderTimeClass && renderTimeClass}`}
       style={renderTimeStyle}
     >
       <span className='resend-text'>{timerLabel}</span>
@@ -85,7 +85,7 @@ const RenderTimeDefault = ({ timerLabel = "", displayRemainingTime = "", renderT
 
 const ResendButtonDefault = ({ resendDisplayLabel = "", resendButtonLabel = "", handleResendClick = () => { }, resendButtonClass = "", resendButtonStyle = {} }) => {
   return (
-    <div className={resendButtonClass || ""}
+    <div className={`renderTimeDefaultClass ${resendButtonClass && resendButtonClass}`}
       style={resendButtonStyle}
     >
       <span className='resend-text'>{resendDisplayLabel}</span>

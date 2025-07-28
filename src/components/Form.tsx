@@ -25,7 +25,7 @@ const Form: React.FC<FormProps> = ({ setOTPInputConfiguration, inputLength = 4, 
       />
 
       <ResendOTP 
-        maxTime={3700}
+        maxTime={10}
         onResendClick={() => console.log("Resend clicked")}
       />
 

@@ -9,7 +9,7 @@ interface ResendProps {
   maxTime?: number;
   onResendClick: () => void;
   className?: string;
-  renderTime?: (remainingTime: string) => React.ReactNode;
+  renderTime?: ({ }) => React.ReactNode;
   renderResendButton?: (handleResendClick: any) => React.ReactNode;
   timerLabel?: string,
 
@@ -18,21 +18,12 @@ interface ResendProps {
   renderTimeStyle?: React.CSSProperties;
   resendButtonClass?: string;
   resendButtonStyle?: React.CSSProperties;
-
 }
 
 export const ResendOTP: React.FC<ResendProps> = ({
   className = '',
   renderTime,
   renderResendButton,
-  timerLabel = "Resend OTP in",
-  resendButtonLabel = "Resend OTP",
-  resendDisplayLabel = "Didn't receive the otp?",
-  renderTimeClass = "",
-  renderTimeStyle = {},
-  resendButtonClass = "",
-  resendButtonStyle = {},
-
   ...props
 }) => {
   const { remainingTime, isTimerActive, handleResendClick } = useResendOTP(props);
@@ -44,12 +35,10 @@ export const ResendOTP: React.FC<ResendProps> = ({
     <div className={`resendComponent ${className}`} role="timer" aria-live="polite">
       {isTimerActive ? (
         <Fragment>
-          {renderTime ? renderTime(remainingTime) :
+          {renderTime ? renderTime({ remainingTime, displayRemainingTime }) :
             <RenderTimeDefault
-              timerLabel={timerLabel}
               displayRemainingTime={displayRemainingTime}
-              renderTimeClass={renderTimeClass}
-              renderTimeStyle={renderTimeStyle}
+              { ...props}
             />
           }
         </Fragment>
@@ -58,11 +47,8 @@ export const ResendOTP: React.FC<ResendProps> = ({
         <Fragment>
           {renderResendButton ? renderResendButton(handleResendClick) :
             <ResendButtonDefault
-              resendDisplayLabel={resendDisplayLabel}
               handleResendClick={handleResendClick}
-              resendButtonLabel={resendButtonLabel}
-              resendButtonClass={resendButtonClass}
-              resendButtonStyle={resendButtonStyle}
+              { ...props}
             />
           }
         </Fragment>
@@ -71,19 +57,34 @@ export const ResendOTP: React.FC<ResendProps> = ({
   );
 }
 
-const RenderTimeDefault = ({ timerLabel = "", displayRemainingTime = "", renderTimeClass = "", renderTimeStyle = {} }) => {
+const RenderTimeDefault = ({
+  timerLabel = "Resend OTP in",
+  displayRemainingTime = "",
+  renderTimeClass = "",
+  renderTimeStyle = {},
+  timerLabelStyle = {},
+  displayRemainingTimeStyle = {},
+  resendTimerClass = '',
+  resendTextClass = ""
+}) => {
   return (
     <div className={`renderTimeDefaultClass ${renderTimeClass && renderTimeClass}`}
       style={renderTimeStyle}
     >
-      <span className='resend-text'>{timerLabel}</span>
-      <span className='resend-timer'>{displayRemainingTime}</span>
+      <span className={`resend-text ${resendTextClass && resendTextClass}`} style={timerLabelStyle}>{timerLabel}</span>
+      <span className={`resend-timer ${resendTimerClass && resendTimerClass}`} style={displayRemainingTimeStyle}>{displayRemainingTime}</span>
     </div>
   )
 }
 
 
-const ResendButtonDefault = ({ resendDisplayLabel = "", resendButtonLabel = "", handleResendClick = () => { }, resendButtonClass = "", resendButtonStyle = {} }) => {
+const ResendButtonDefault = ({
+  resendButtonLabel = "Resend OTP",
+  resendDisplayLabel = "Didn't receive the otp?",
+  handleResendClick = () => { },
+  resendButtonClass = "",
+  resendButtonStyle = {}
+}) => {
   return (
     <div className={`renderTimeDefaultClass ${resendButtonClass && resendButtonClass}`}
       style={resendButtonStyle}
